@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
     <title>User Import</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>User Import</h1>
-        <form action="{{ url_for('import_users') }}" method="POST">
-            <div class="form-group">
-                <label for="inputFile">CSV File:</label>
-                <input type="file" id="inputFile" name="inputFile" accept=".csv" required>
-            </div>
-            <div class="form-group">
-                <label for="firewall">Firewall Address:</label>
-                <input type="text" id="firewall" name="firewall" placeholder="Firewall IP or Hostname">
-            </div>
-            <div class="form-group">
-                <label for="fwuser">Admin Username:</label>
-                <input type="text" id="fwuser" name="fwuser" value="admin">
-            </div>
-            <div class="form-group">
-                <label for="fwpassword">Admin Password:</label>
-                <input type="password" id="fwpassword" name="fwpassword" value="password">
-            </div>
-            <div class="form-group">
-                <label for="add">Add Mode:</label>
-                <input type="checkbox" id="add" name="add">
-            </div>
-            <div class="form-group">
-                <label for="insecure">Insecure Connection:</label>
-                <input type="checkbox" id="insecure" name="insecure">
-            </div>
-            <button type="submit">Import Users</button>
-        </form>
+      <h1>User Import</h1>
+      <form action="{{ url_for('app_routes.user_import') }}" method="POST">
+        <div class="form-group">
+          <label for="inputFile">CSV File:</label>
+          <input
+            type="file"
+            id="inputFile"
+            name="inputFile"
+            accept=".csv"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="firewall">Firewall Address:</label>
+          <input
+            type="text"
+            id="firewall"
+            name="firewall"
+            placeholder="Firewall IP or Hostname"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fwuser">Admin Username:</label>
+          <input type="text" id="fwuser" name="fwuser" value="admin" />
+        </div>
+        <div class="form-group">
+          <label for="fwpassword">Admin Password:</label>
+          <input
+            type="password"
+            id="fwpassword"
+            name="fwpassword"
+            value="password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="add">Add Mode:</label>
+          <input type="checkbox" id="add" name="add" />
+        </div>
+        <div class="form-group">
+          <label for="insecure">Insecure Connection:</label>
+          <input type="checkbox" id="insecure" name="insecure" />
+        </div>
+        <button type="submit">Import Users</button>
+      </form>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-</body>
+  </body>
 </html>

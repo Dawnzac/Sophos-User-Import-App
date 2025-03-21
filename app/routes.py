@@ -5,6 +5,10 @@ from .models import User
 
 app_routes = Blueprint('app_routes', __name__)
 
+@app_routes.route('/')
+def index():
+    return redirect(url_for('app_routes.login'))
+
 @app_routes.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -38,3 +42,10 @@ def user_import():
         flash('Users imported successfully!', 'success')
         return redirect(url_for('app_routes.dashboard'))
     return render_template('user_import.html', form=form)
+
+@app_routes.route('/update-settings', methods=['POST'])
+@login_required
+def update_settings():
+    # Logic for updating settings goes here
+    flash('Settings updated successfully!', 'success')
+    return redirect(url_for('app_routes.dashboard'))
