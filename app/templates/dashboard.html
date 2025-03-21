@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to the Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li><a href="{{ url_for('user_import') }}">Import Users</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>User Information</h2>
+            <p>Here you can manage your user settings and configurations.</p>
+            <div class="user-info">
+                <h3>Your Details</h3>
+                <p>Name: {{ current_user.name }}</p>
+                <p>Email: {{ current_user.email }}</p>
+            </div>
+            <div class="options">
+                <h3>Options</h3>
+                <form action="{{ url_for('update_settings') }}" method="POST">
+                    <label for="setting1">Setting 1:</label>
+                    <input type="text" id="setting1" name="setting1" required>
+                    <label for="setting2">Setting 2:</label>
+                    <input type="text" id="setting2" name="setting2" required>
+                    <button type="submit">Update Settings</button>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2023 Sophos User Import Application</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
